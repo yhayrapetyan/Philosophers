@@ -1,8 +1,12 @@
 SRC =			philo.c \
 
-HELPERS_SRC = 	
+HELPERS_SRC = 	print_instructions.c \
+				ft_error.c \
+				ft_strlen.c \
+				ft_atoi.c \
+				init_data.c
 
-VALIDATION_SRC = 	
+VALIDATION_SRC = 	check_input.c
 
 HEADERS = 	philo.h
 
