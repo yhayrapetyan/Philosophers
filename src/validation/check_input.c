@@ -17,7 +17,7 @@ static int	check_args(int ac, char **av)
 	return (0);
 }
 
-static int	is_input_digit(int ac, char **av)
+static int	is_digit(int ac, char **av)
 {
 	int	i;
 	int	k;
@@ -42,7 +42,7 @@ int	check_input(int ac, char **av)
 	(void)av;
 	if (ac > 6 || ac < 5)
 		return (1);
-	if (is_input_digit(ac, av) != 0)
+	if (is_digit(ac, av) != 0)
 		return (1);
 	if (check_args(ac, av) != 0)
 		return (1);

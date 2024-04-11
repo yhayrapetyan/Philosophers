@@ -45,7 +45,6 @@ void	init_philos(t_data *data)
 		pthread_mutex_init(&philos[i].mut_state, NULL);
 		pthread_mutex_init(&philos[i].mut_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
-		pthread_mutex_init(&philos[i].mut_state, NULL);
 		update_last_meal_time(&philos[i]);
 		i++;
 	}
@@ -62,7 +61,7 @@ static void	allocate_memory(t_data *data)
 		free(data->philos);
 		ft_error("Allocation Fails\n", 17);
 	}
-	data->philo_ths = (pthread_t)malloc(sizeof(pthread_t) * data->nb_philos);
+	data->philo_ths = (pthread_t *)malloc(sizeof(pthread_t) * data->nb_philos);
 	if (data->philo_ths == NULL)
 	{
 		free(data->philos);

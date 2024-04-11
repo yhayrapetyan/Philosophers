@@ -1,14 +1,19 @@
 SRC =			philo.c \
+				monitoring.c \
+				routine.c \
+				clean_data.c
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
+				get_time.c \
 				ft_strlen.c \
 				ft_atoi.c \
 				init_data.c
 
 VALIDATION_SRC = 	check_input.c
 
-HEADERS = 	philo.h
+HEADERS = 	philo_utils.h \
+			philo.h
 
 SRC_DIR = ./src/
 HELPERS_DIR = ./src/helpers/
