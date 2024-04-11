@@ -1,14 +1,22 @@
 SRC =			philo.c \
 				monitoring.c \
 				routine.c \
-				clean_data.c
+				clean_data.c \
+				eat.c \
+				think.c \
+				philo_sleep.c
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
-				get_time.c \
+				update_last_meal_time.c \
 				ft_strlen.c \
 				ft_atoi.c \
 				init_data.c
+
+GETTERS_SRC = 	get_time.c \
+				get_philo_state.c
+
+SETTERS_SRC = set_philo_state.c
 
 VALIDATION_SRC = 	check_input.c
 
@@ -18,16 +26,22 @@ HEADERS = 	philo_utils.h \
 SRC_DIR = ./src/
 HELPERS_DIR = ./src/helpers/
 VALIDATION_DIR = ./src/validation/
+GETTERS_DIR = ./src/helpers/getters/
+SETTERS_DIR = ./src/helpers/setters/
 INC = ./includes/
 
 HEADERS := $(addprefix $(INC), $(HEADERS))
 SRC := $(addprefix $(SRC_DIR), $(SRC))
+GETTERS_SRC := $(addprefix $(GETTERS_DIR), $(GETTERS_SRC))
+SETTERS_SRC := $(addprefix $(SETTERS_DIR), $(SETTERS_SRC))
 VALIDATION_SRC := $(addprefix $(VALIDATION_DIR), $(VALIDATION_SRC))
 HELPERS_SRC := $(addprefix $(HELPERS_DIR), $(HELPERS_SRC))
 OBJS = $(SRC:.c=.o)
 
 SRC += $(VALIDATION_SRC)
 SRC += $(HELPERS_SRC)
+SRC += $(GETTERS_SRC)
+SRC += $(SETTERS_SRC)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
