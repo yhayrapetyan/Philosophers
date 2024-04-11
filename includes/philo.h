@@ -31,5 +31,10 @@ void		*alive_monitoring(void *data_p);
 void		*full_monitoring(void *data_p);
 int 		philo_sleep(t_philo *philo);
 int 		think(t_philo *philo);
+void		drop_left_fork(t_philo *philo);
+void		drop_right_fork(t_philo *philo);
+int			take_left_fork(t_philo *philo);
+int			take_right_fork(t_philo *philo);
+
 
 #endif

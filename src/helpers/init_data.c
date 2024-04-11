@@ -35,6 +35,7 @@ void	init_philos(t_data *data)
 		philos[i].id = i + 1;
 		philos[i].meals_had = 0;
 		philos[i].state = START;
+		philos[i].data = data;
 		pthread_mutex_init(&philos[i].mut_state, NULL);
 		pthread_mutex_init(&philos[i].mut_meals_had, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);

@@ -16,6 +16,5 @@ void	*routine(void *philo_p)
 		think(philo);
 	}
 	(void)philo;
-	fprintf(stderr,"routine\n");
 	return (NULL);
 }

@@ -28,6 +28,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				meals_had;
+	struct s_data	*data;
 	t_state			state;
 	u_int64_t		last_eat_time;
 	pthread_mutex_t	*l_fork;

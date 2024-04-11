@@ -4,6 +4,7 @@ SRC =			philo.c \
 				clean_data.c \
 				eat.c \
 				think.c \
+				fork_utils.c \
 				philo_sleep.c
 
 HELPERS_SRC = 	print_instructions.c \
