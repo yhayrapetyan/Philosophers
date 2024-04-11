@@ -9,7 +9,6 @@ SRC =			philo.c \
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
-				update_last_meal_time.c \
 				ft_strlen.c \
 				ft_atoi.c \
 				init_data.c
@@ -17,7 +16,10 @@ HELPERS_SRC = 	print_instructions.c \
 GETTERS_SRC = 	get_time.c \
 				get_philo_state.c
 
-SETTERS_SRC = set_philo_state.c
+SETTERS_SRC = 	set_philo_state.c \
+				update_last_meal_time.c \
+				update_number_meals_had.c
+
 
 VALIDATION_SRC = 	check_input.c
 

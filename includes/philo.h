@@ -15,14 +15,16 @@ void		init_forks(t_data *data);
 void		init_data(t_data *data, int ac, char **av);
 void		ft_error(char *message, int status);
 void		clean_data(t_data *data);
-void		update_last_meal_time(t_philo *philo);
 
 //GETTERS
 t_state		get_philo_state(t_philo *philo);
 u_int64_t	get_time(void);
 
 //SETTERS
-void	set_philo_state(t_philo *philo, t_state state);
+void		set_philo_state(t_philo *philo, t_state state);
+void		update_last_meal_time(t_philo *philo);
+void		update_number_meals_had(t_philo *philo);
+
 
 //MAIN
 int			 eat(t_philo *philo);
@@ -35,6 +37,7 @@ void		drop_left_fork(t_philo *philo);
 void		drop_right_fork(t_philo *philo);
 int			take_left_fork(t_philo *philo);
 int			take_right_fork(t_philo *philo);
+void		drop_forks(t_philo *philo);
 
 
 #endif

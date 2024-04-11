@@ -5,6 +5,8 @@ void	*routine(void *philo_p)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_p;
+//	if (philo->id % 2 == 0)
+//		usleep(philo->data->eat_time - 10);
 	while (get_philo_state(philo) != DEAD)
 	{
 		eat(philo);

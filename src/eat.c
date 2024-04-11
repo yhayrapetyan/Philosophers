@@ -18,8 +18,11 @@ int eat(t_philo *philo)
 {
 	if (take_forks(philo) != 0)
 		return (1);
-	drop_left_fork(philo);
-	drop_right_fork(philo);
+	set_philo_state(philo, EATING);
 	printf("%d philo is eating\n", philo->id);
+	update_last_meal_time(philo);
+	usleep(philo->data->eat_time);
+	update_number_meals_had(philo);
+	drop_forks(philo);
 	return (0);
 }

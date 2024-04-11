@@ -10,6 +10,12 @@ void	drop_right_fork(t_philo *philo)
 	pthread_mutex_unlock(philo->r_fork);
 }
 
+void	drop_forks(t_philo *philo)
+{
+	drop_right_fork(philo);
+	drop_left_fork(philo);
+}
+
 int	take_left_fork(t_philo *philo)
 {
 //	if (philo_died(philo) || get_philo_state(philo) == DEAD)
