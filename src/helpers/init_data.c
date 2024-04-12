@@ -71,6 +71,7 @@ void	init_data(t_data *data, int ac, char **av)
 	data->nb_meals = -1;
 	data->full_p = 0;
 	data->can_print = 1;
+	data->can_iterate = 1;
 	data->eat_time = (u_int64_t)ft_atoi(av[3]);
 	data->die_time = (u_int64_t)ft_atoi(av[2]);
 	data->sleep_time = (u_int64_t)ft_atoi(av[4]);

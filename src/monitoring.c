@@ -23,23 +23,37 @@ void	*alive_monitoring(void *data_p)
 	data = (t_data *)data_p;
 	philos = (t_philo *)data->philos;
 	i = 0;
-	while (i < data->nb_philos)
+	while (i < data->nb_philos && data->can_iterate)
 	{
-//		pthread_mutex_lock(&data->mut_iteration);
-		if (philo_died(&philos[i]) || philos[i].state == DEAD)
+		pthread_mutex_lock(&data->mut_iteration);
+//		pthread_mutex_lock(&philos->mut_write);
+		if (data->can_iterate && philo_died(&philos[i]))
 		{
 //			pthread_mutex_lock(&data->mut_iteration);
-			print_message(data, philos[i].id, DIED);
-//			data->can_print = 0;
-//			pthread_mutex_unlock(&data->mut_iteration);
+//			pthread_mutex_lock(&philos->mut_write);
+			data->can_print = 0;
+			data->can_iterate = 0;
 			stop_processes(data);
+			data->can_print = 1;
+			printf("%lu %d %s\n",  get_time() - data->start_time, i + 1, DIED);
+//			print_message(data, philos[i].id, DIED);
+//			i = 0;
+//			while (i < data->nb_philos)
+//			{
+//				printf("philo[%d] state = %d\n", i, philos[i].state);
+//				i++;
+//			}
+//			exit(0);
+			pthread_mutex_unlock(&data->mut_iteration);
+//			pthread_mutex_unlock(&philos->mut_write);
 			break ;
 		}
-//		pthread_mutex_unlock(&data->mut_iteration);
+//		pthread_mutex_unlock(&philos->mut_write);
+		pthread_mutex_unlock(&data->mut_iteration);
 		if (i == data->nb_philos -1)
 			i = 0;
 		i++;
-		usleep(1000);
+		usleep(500);
 	}
 	return (NULL);
 }

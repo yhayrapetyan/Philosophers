@@ -78,7 +78,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: $(OBJS)
-	@cc $(OBJS) -fsanitize=thread  -o $(NAME)
+	@cc $(OBJS) -fsanitize=address  -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
@@ -99,15 +99,12 @@ re: fclean all
 print_info: print_name
 	@printf "%b" "$(BLUE)Compiler: $(GREEN)$(CC)\n"
 	@printf "%b" "$(BLUE)Name: $(GREEN)$(NAME)\n"
-	@printf "%b" "$(BLUE)Uname: $(GREEN)$(UNAME)\n"
 	@printf "%b" "$(BLUE)C Flags: $(GREEN)$(CFLAGS)\n"
-	@printf "%b" "$(BLUE)Lib Flags: $(GREEN)$(LIB_FLAGS)\n"
 	@printf "%b" "$(BLUE)Src Count: $(GREEN)$(SRC_COUNT_TOT)$(NO_COLOR)\n"
 
 
 print_name:
 	@printf "%b" "$(BLUE)"
 	@echo "Philosophers\n"
-	@echo "\n"
 
 .PHONY: all clean fclean re sanitize bonus print_name print_info
