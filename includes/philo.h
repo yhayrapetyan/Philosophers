@@ -15,9 +15,11 @@ void		init_forks(t_data *data);
 void		init_data(t_data *data, int ac, char **av);
 void		ft_error(char *message, int status);
 void		clean_data(t_data *data);
+void		print_message(t_data *data, int id, char *message);
 
 //GETTERS
 t_state		get_philo_state(t_philo *philo);
+u_int64_t	get_start_time(t_data *data);
 u_int64_t	get_time(void);
 
 //SETTERS

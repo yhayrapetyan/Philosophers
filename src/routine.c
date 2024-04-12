@@ -17,6 +17,5 @@ void	*routine(void *philo_p)
 			break ;
 		think(philo);
 	}
-	(void)philo;
 	return (NULL);
 }

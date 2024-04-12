@@ -19,7 +19,7 @@ int eat(t_philo *philo)
 	if (take_forks(philo) != 0)
 		return (1);
 	set_philo_state(philo, EATING);
-	printf("%d philo is eating\n", philo->id);
+	print_message(philo->data, philo->id, EAT);
 	update_last_meal_time(philo);
 	usleep(philo->data->eat_time);
 	update_number_meals_had(philo);

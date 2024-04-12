@@ -12,7 +12,13 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdint.h>
 
+# define TAKE_FORKS "has taken a fork"
+# define THINK "is thinking"
+# define SLEEP "is sleeping"
+# define EAT "is eating"
+# define DIED "died"
 
 typedef enum e_philo_state
 {

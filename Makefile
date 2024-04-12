@@ -10,11 +10,13 @@ SRC =			philo.c \
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
 				ft_strlen.c \
+				print_message.c \
 				ft_atoi.c \
 				init_data.c
 
 GETTERS_SRC = 	get_time.c \
-				get_philo_state.c
+				get_philo_state.c \
+				get_start_time.c
 
 SETTERS_SRC = 	set_philo_state.c \
 				update_last_meal_time.c \
