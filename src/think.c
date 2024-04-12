@@ -2,7 +2,9 @@
 
 int think(t_philo *philo)
 {
-	printf("%d philo think too much and died\n", philo->id);
-	set_philo_state(philo, DEAD);
+	set_philo_state(philo, THINKING);
+	if (get_philo_state(philo) == DEAD)
+		return (1);
+	print_message(philo->data, philo->id, THINK);
 	return (0);
 }

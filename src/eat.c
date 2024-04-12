@@ -21,7 +21,7 @@ int eat(t_philo *philo)
 	set_philo_state(philo, EATING);
 	print_message(philo->data, philo->id, EAT);
 	update_last_meal_time(philo);
-	usleep(philo->data->eat_time);
+	ft_usleep(philo->data->eat_time);
 	update_number_meals_had(philo);
 	drop_forks(philo);
 	return (0);

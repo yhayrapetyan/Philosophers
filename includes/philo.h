@@ -16,6 +16,7 @@ void		init_data(t_data *data, int ac, char **av);
 void		ft_error(char *message, int status);
 void		clean_data(t_data *data);
 void		print_message(t_data *data, int id, char *message);
+void		ft_usleep(uint64_t sleep_time);
 
 //GETTERS
 t_state		get_philo_state(t_philo *philo);

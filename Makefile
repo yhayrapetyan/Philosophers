@@ -12,6 +12,7 @@ HELPERS_SRC = 	print_instructions.c \
 				ft_strlen.c \
 				print_message.c \
 				ft_atoi.c \
+				ft_usleep.c \
 				init_data.c
 
 GETTERS_SRC = 	get_time.c \
