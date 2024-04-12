@@ -9,13 +9,16 @@ void	*routine(void *philo_p)
 		ft_usleep(philo->data->eat_time - 10);
 	while (get_philo_state(philo) != DEAD)
 	{
-		eat(philo);
+		if (eat(philo) != 0)
+			break ;
 		if (get_philo_state(philo) == DEAD)
 			break ;
-		philo_sleep(philo);
+		if (philo_sleep(philo) != 0)
+			break ;
 		if (get_philo_state(philo) == DEAD)
 			break ;
-		think(philo);
+		if (think(philo) != 0)
+			break ;
 	}
 	return (NULL);
 }

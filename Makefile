@@ -5,7 +5,8 @@ SRC =			philo.c \
 				eat.c \
 				think.c \
 				fork_utils.c \
-				philo_sleep.c
+				philo_sleep.c \
+				philo_died.c
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
@@ -17,7 +18,9 @@ HELPERS_SRC = 	print_instructions.c \
 
 GETTERS_SRC = 	get_time.c \
 				get_philo_state.c \
-				get_start_time.c
+				get_start_time.c \
+				get_die_time.c \
+				get_last_eat_time.c
 
 SETTERS_SRC = 	set_philo_state.c \
 				update_last_meal_time.c \

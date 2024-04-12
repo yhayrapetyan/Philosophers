@@ -18,8 +18,8 @@ void	drop_forks(t_philo *philo)
 
 int	take_left_fork(t_philo *philo)
 {
-//	if (philo_died(philo) || get_philo_state(philo) == DEAD)
-//		return (1);
+	if (philo_died(philo) || get_philo_state(philo) == DEAD)
+		return (1);
 	pthread_mutex_lock(philo->l_fork);
 	print_message(philo->data, philo->id, TAKE_FORKS);
 	return (0);
@@ -27,8 +27,8 @@ int	take_left_fork(t_philo *philo)
 
 int	take_right_fork(t_philo *philo)
 {
-//	if (philo_died(philo) || get_philo_state(philo) == DEAD)
-//		return (1);
+	if (philo_died(philo) || get_philo_state(philo) == DEAD)
+		return (1);
 	pthread_mutex_lock(philo->r_fork);
 	print_message(philo->data, philo->id, TAKE_FORKS);
 	return (0);

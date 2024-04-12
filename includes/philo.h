@@ -21,6 +21,8 @@ void		ft_usleep(uint64_t sleep_time);
 //GETTERS
 t_state		get_philo_state(t_philo *philo);
 u_int64_t	get_start_time(t_data *data);
+uint64_t	get_die_time(t_data *data);
+uint64_t	get_last_eat_time(t_philo *philo);
 u_int64_t	get_time(void);
 
 //SETTERS
@@ -41,6 +43,6 @@ void		drop_right_fork(t_philo *philo);
 int			take_left_fork(t_philo *philo);
 int			take_right_fork(t_philo *philo);
 void		drop_forks(t_philo *philo);
-
+int 		philo_died(t_philo *philo);
 
 #endif
