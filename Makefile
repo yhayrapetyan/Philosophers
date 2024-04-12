@@ -17,10 +17,10 @@ HELPERS_SRC = 	print_instructions.c \
 				init_data.c
 
 GETTERS_SRC = 	get_time.c \
-				get_philo_state.c \
-				get_start_time.c \
-				get_die_time.c \
-				get_last_eat_time.c
+#				get_philo_state.c \
+#				get_start_time.c \
+#				get_die_time.c \
+#				get_last_eat_time.c
 
 SETTERS_SRC = 	set_philo_state.c \
 				update_last_meal_time.c \
@@ -78,7 +78,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: $(OBJS)
-	@cc $(OBJS) -fsanitize=address  -o $(NAME)
+	@cc $(OBJS) -fsanitize=thread  -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))

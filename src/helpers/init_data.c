@@ -36,9 +36,10 @@ void	init_philos(t_data *data)
 		philos[i].meals_had = 0;
 		philos[i].state = START;
 		philos[i].data = data;
-		pthread_mutex_init(&philos[i].mut_state, NULL);
-		pthread_mutex_init(&philos[i].mut_meals_had, NULL);
-		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
+		pthread_mutex_init(&philos[i].mut_write, NULL);
+//		pthread_mutex_init(&philos[i].mut_state, NULL);
+//		pthread_mutex_init(&philos[i].mut_meals_had, NULL);
+//		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
 		update_last_meal_time(&philos[i]);
 		i++;
 	}
@@ -75,12 +76,12 @@ void	init_data(t_data *data, int ac, char **av)
 	data->sleep_time = (u_int64_t)ft_atoi(av[4]);
 	if (ac == 6)
 		data->nb_meals = ft_atoi(av[5]);
-	pthread_mutex_init(&data->mut_eat_t, NULL);
-	pthread_mutex_init(&data->mut_sleep_t, NULL);
-	pthread_mutex_init(&data->mut_die_t, NULL);
-	pthread_mutex_init(&data->mut_nb_philos, NULL);
-	pthread_mutex_init(&data->mut_start_t, NULL);
-	pthread_mutex_init(&data->mut_print, NULL);
+//	pthread_mutex_init(&data->mut_eat_t, NULL);
+//	pthread_mutex_init(&data->mut_sleep_t, NULL);
+//	pthread_mutex_init(&data->mut_die_t, NULL);
+//	pthread_mutex_init(&data->mut_nb_philos, NULL);
+//	pthread_mutex_init(&data->mut_start_t, NULL);
+//	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_iteration, NULL);
 	allocate_memory(data);
 }

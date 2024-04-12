@@ -2,11 +2,8 @@
 
 int	philo_died(t_philo *philo)
 {
-	t_data	*data;
-
-	data = (t_data *)philo->data;
-	if (get_time() - get_last_eat_time(philo) > get_die_time(data) && \
-		get_philo_state(philo) != EATING)
+	if (get_time() - philo->last_eat_time > philo->data->die_time && \
+		philo->state != EATING)
 	{
 		set_philo_state(philo, DEAD);
 		return (1);
