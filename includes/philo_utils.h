@@ -15,6 +15,8 @@
 # include <stdint.h>
 
 # define TAKE_FORKS "has taken a fork"
+# define TAKE_RFORK "has taken a right fork"
+# define TAKE_LFORK "has taken a left fork"
 # define THINK "is thinking"
 # define SLEEP "is sleeping"
 # define EAT "is eating"
@@ -49,6 +51,7 @@ typedef struct s_data
 	int					nb_philos;
 	int					nb_meals;
 	int					full_p;
+	int 				can_print;
 	u_int64_t			eat_time;
 	u_int64_t			die_time;
 	u_int64_t			sleep_time;
@@ -58,6 +61,8 @@ typedef struct s_data
 	pthread_mutex_t		mut_die_t;
 	pthread_mutex_t		mut_sleep_t;
 	pthread_mutex_t		mut_start_t;
+	pthread_mutex_t		mut_iteration;
+	pthread_mutex_t		mut_print;
 	pthread_mutex_t		*forks;
 	pthread_t			*philo_ths;
 	pthread_t			alive_monit;

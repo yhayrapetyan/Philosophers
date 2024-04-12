@@ -69,6 +69,7 @@ void	init_data(t_data *data, int ac, char **av)
 	data->nb_philos = ft_atoi(av[1]);
 	data->nb_meals = -1;
 	data->full_p = 0;
+	data->can_print = 1;
 	data->eat_time = (u_int64_t)ft_atoi(av[3]);
 	data->die_time = (u_int64_t)ft_atoi(av[2]);
 	data->sleep_time = (u_int64_t)ft_atoi(av[4]);
@@ -79,5 +80,7 @@ void	init_data(t_data *data, int ac, char **av)
 	pthread_mutex_init(&data->mut_die_t, NULL);
 	pthread_mutex_init(&data->mut_nb_philos, NULL);
 	pthread_mutex_init(&data->mut_start_t, NULL);
+	pthread_mutex_init(&data->mut_print, NULL);
+	pthread_mutex_init(&data->mut_iteration, NULL);
 	allocate_memory(data);
 }
