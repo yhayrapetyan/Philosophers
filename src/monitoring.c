@@ -58,9 +58,39 @@ void	*alive_monitoring(void *data_p)
 	return (NULL);
 }
 
+static int is_philo_full(t_data *data, t_philo *philo)
+{
+	int	nb_meals_philo_had;
+
+	pthread_mutex_lock(&philo->mut_write);
+	nb_meals_philo_had = philo->meals_had;
+	pthread_mutex_unlock(&philo->mut_write);
+	if (nb_meals_philo_had >= data->nb_meals)
+		return (1);
+	return (0);
+}
+
 void	*full_monitoring(void *data_p)
 {
-	(void)data_p;
-	printf("full monitoring\n");
+	int 	i;
+	t_data	*data;
+
+	i = 0;
+	data = (t_data *)data_p;
+	while (i < data->nb_philos && data->can_iterate)
+	{
+		usleep(500);
+		if (!is_philo_full(data, &data->philos[i])) {
+			i = 0;
+		}
+		i++;
+	}
+	if (data->can_iterate)
+	{
+		pthread_mutex_lock(&data->mut_iteration);
+		data->can_iterate = 0;
+		pthread_mutex_unlock(&data->mut_iteration);
+		stop_processes(data);
+	}
 	return (NULL);
 }
