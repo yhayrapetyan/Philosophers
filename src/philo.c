@@ -1,15 +1,5 @@
 #include "philo.h"
 
-//int	get_nb_philos(t_data *data)
-//{
-//	int	nb_philos;
-//
-//	pthread_mutex_lock(&data->mut_nb_philos);
-//	nb_philos = data->nb_philos;
-//	pthread_mutex_unlock(&data->mut_nb_philos);
-//	return (nb_philos);
-//}
-
 void	create_threads(t_data *data)
 {
 	int i;

@@ -4,7 +4,6 @@ static int	take_forks(t_philo *philo)
 {
 	if (philo->data->nb_philos == 1)
 		return (1);//need to handle 1 philo
-//	if (philo->id < philo->data->nb_philos && take_right_fork(philo) != 0)
 	if (take_right_fork(philo) != 0)
 		return (1);
 	if (take_left_fork(philo) != 0)

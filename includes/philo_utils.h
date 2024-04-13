@@ -41,10 +41,9 @@ typedef struct s_philo
 	u_int64_t		last_eat_time;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	mut_write;
-//	pthread_mutex_t	mut_state;
-//	pthread_mutex_t	mut_meals_had;
-//	pthread_mutex_t	mut_last_eat_time;
+	pthread_mutex_t	mut_state;
+	pthread_mutex_t	mut_meals_had;
+	pthread_mutex_t	mut_last_eat_time;
 }	t_philo;
 
 typedef struct s_data
@@ -58,13 +57,8 @@ typedef struct s_data
 	u_int64_t			die_time;
 	u_int64_t			sleep_time;
 	u_int64_t			start_time;
-//	pthread_mutex_t		mut_nb_philos;
-//	pthread_mutex_t		mut_eat_t;
-//	pthread_mutex_t		mut_die_t;
-//	pthread_mutex_t		mut_sleep_t;
-//	pthread_mutex_t		mut_start_t;
 	pthread_mutex_t		mut_iteration;
-//	pthread_mutex_t		mut_print;
+	pthread_mutex_t		mut_print;
 	pthread_mutex_t		*forks;
 	pthread_t			*philo_ths;
 	pthread_t			alive_monit;
