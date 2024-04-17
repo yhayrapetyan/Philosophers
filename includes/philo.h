@@ -24,6 +24,13 @@ u_int64_t	get_start_time(t_data *data);
 uint64_t	get_die_time(t_data *data);
 uint64_t	get_last_eat_time(t_philo *philo);
 u_int64_t	get_time(void);
+int			can_print(t_data *data);
+u_int64_t	get_eat_time(t_data *data);
+int 		get_nb_philos(t_data *data);
+u_int64_t	get_sleep_time(t_data *data);
+int			can_iterate(t_data *data);
+int 		get_nb_meals(t_data *data);
+
 
 //SETTERS
 void		set_philo_state(t_philo *philo, t_state state);

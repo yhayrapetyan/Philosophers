@@ -59,6 +59,12 @@ typedef struct s_data
 	u_int64_t			start_time;
 	pthread_mutex_t		mut_iteration;
 	pthread_mutex_t		mut_print;
+	pthread_mutex_t		mut_eat_time;
+	pthread_mutex_t		mut_nb_philos;
+	pthread_mutex_t		mut_sleep_time;
+	pthread_mutex_t		mut_die_time;
+	pthread_mutex_t		mut_start_time;
+	pthread_mutex_t		mut_nb_meals;
 	pthread_mutex_t		*forks;
 	pthread_t			*philo_ths;
 	pthread_t			alive_monit;

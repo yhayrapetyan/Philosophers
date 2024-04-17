@@ -78,5 +78,11 @@ void	init_data(t_data *data, int ac, char **av)
 		data->nb_meals = ft_atoi(av[5]);
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_iteration, NULL);
+	pthread_mutex_init(&data->mut_eat_time, NULL);
+	pthread_mutex_init(&data->mut_nb_philos, NULL);
+	pthread_mutex_init(&data->mut_sleep_time, NULL);
+	pthread_mutex_init(&data->mut_die_time, NULL);
+	pthread_mutex_init(&data->mut_start_time, NULL);
+	pthread_mutex_init(&data->mut_nb_meals, NULL);
 	allocate_memory(data);
 }

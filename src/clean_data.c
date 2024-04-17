@@ -15,6 +15,12 @@ void	clean_data(t_data *data)
 	}
 	pthread_mutex_destroy(&data->mut_iteration);
 	pthread_mutex_destroy(&data->mut_print);
+	pthread_mutex_destroy(&data->mut_eat_time);
+	pthread_mutex_destroy(&data->mut_nb_philos);
+	pthread_mutex_destroy(&data->mut_sleep_time);
+	pthread_mutex_destroy(&data->mut_die_time);
+	pthread_mutex_destroy(&data->mut_start_time);
+	pthread_mutex_destroy(&data->mut_nb_meals);
 	free(data->philo_ths);
 	free(data->philos);
 	free(data->forks);
