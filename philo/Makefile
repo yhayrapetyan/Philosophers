@@ -85,7 +85,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: $(OBJS)
-	@cc $(OBJS) -fsanitize=thread  -o $(NAME)
+	@cc $(OBJS) -fsanitize=thread -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
