@@ -6,7 +6,9 @@ SRC =			philo.c \
 				think.c \
 				fork_utils.c \
 				philo_sleep.c \
-				philo_died.c
+				philo_died.c \
+				init_data.c
+
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
@@ -14,7 +16,6 @@ HELPERS_SRC = 	print_instructions.c \
 				print_message.c \
 				ft_atoi.c \
 				ft_usleep.c \
-				init_data.c
 
 GETTERS_SRC = 	get_time.c \
 				can_print.c \
@@ -38,11 +39,11 @@ VALIDATION_SRC = 	check_input.c
 HEADERS = 	philo_utils.h \
 			philo.h
 
-SRC_DIR = ./src/
+SRC_DIR = ./src/main/
 HELPERS_DIR = ./src/helpers/
 VALIDATION_DIR = ./src/validation/
-GETTERS_DIR = ./src/helpers/getters/
-SETTERS_DIR = ./src/helpers/setters/
+GETTERS_DIR = ./src/main/getters/
+SETTERS_DIR = ./src/main/setters/
 INC = ./includes/
 
 HEADERS := $(addprefix $(INC), $(HEADERS))
@@ -84,7 +85,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: $(OBJS)
-	@cc $(OBJS) -fsanitize=address  -o $(NAME)
+	@cc $(OBJS) -fsanitize=thread  -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
