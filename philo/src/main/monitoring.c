@@ -1,19 +1,14 @@
 #include "philo.h"
 
-static void	stop_processes(t_data *data)
+static void	notify_philo_died(t_data *data, int id)
 {
-	int 	i;
-	int 	nb_philos;
-	t_philo	*philos;
-
-	i = 0;
-	nb_philos = get_nb_philos(data);
-	philos = data->philos;
-	while (i < nb_philos)
-	{
-		set_philo_state(&philos[i], DEAD);
-		i++;
-	}
+	data->can_print = 0;
+	data->can_iterate = 0;
+	stop_processes(data);
+	data->can_print = 1;
+	pthread_mutex_lock(&data->mut_print);
+	printf("%lu %d %s\n",  get_time() - get_start_time(data), id, DIED);
+	pthread_mutex_unlock(&data->mut_print);
 }
 
 void	*alive_monitoring(void *data_p)
@@ -32,11 +27,7 @@ void	*alive_monitoring(void *data_p)
 		pthread_mutex_lock(&data->mut_iteration);
 		if (data->can_iterate && philo_died(&philos[i]))
 		{
-			data->can_print = 0;
-			data->can_iterate = 0;
-			stop_processes(data);
-			data->can_print = 1;
-			printf("%lu %d %s\n",  get_time() - get_start_time(data), i + 1, DIED);//valgrind show data race because of printf, with write no problem.
+			notify_philo_died(data, i + 1);
 			pthread_mutex_unlock(&data->mut_iteration);
 			break ;
 		}

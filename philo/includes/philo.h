@@ -50,5 +50,6 @@ int			take_left_fork(t_philo *philo);
 int			take_right_fork(t_philo *philo);
 void		drop_forks(t_philo *philo);
 int 		philo_died(t_philo *philo);
+void		stop_processes(t_data *data);
 
 #endif

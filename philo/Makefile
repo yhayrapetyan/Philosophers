@@ -7,8 +7,8 @@ SRC =			philo.c \
 				fork_utils.c \
 				philo_sleep.c \
 				philo_died.c \
-				init_data.c
-
+				init_data.c \
+				stop_processes.c
 
 HELPERS_SRC = 	print_instructions.c \
 				ft_error.c \
