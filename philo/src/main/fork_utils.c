@@ -1,19 +1,36 @@
 #include "philo.h"
 
-void	drop_left_fork(t_philo *philo)
+int	take_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->l_fork);
-}
-
-void	drop_right_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->r_fork);
+	if (get_nb_philos(philo->data) == 1)
+		return (1);//need to handle 1 philo
+	if (philo->id % 2 == 0)
+	{
+		if (take_right_fork(philo) != 0)
+			return (1);
+		if (take_left_fork(philo) != 0)
+		{
+			pthread_mutex_unlock(philo->r_fork);
+			return (1);
+		}
+	}
+	else
+	{
+		if (take_left_fork(philo) != 0)
+			return (1);
+		if (take_right_fork(philo) != 0)
+		{
+			pthread_mutex_unlock(philo->l_fork);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 void	drop_forks(t_philo *philo)
 {
-	drop_right_fork(philo);
-	drop_left_fork(philo);
+	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);
 }
 
 int	take_left_fork(t_philo *philo)

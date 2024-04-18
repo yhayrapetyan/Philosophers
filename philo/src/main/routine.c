@@ -3,9 +3,10 @@
 void	*routine(void *philo_p)
 {
 	t_philo	*philo;
+
 	philo = (t_philo *)philo_p;
 	if (philo->id % 2 == 0)
-		ft_usleep(get_eat_time(philo->data) - 10);//potential issue
+		ft_usleep(get_eat_time(philo->data) - 10);
 	while (get_philo_state(philo) != DEAD)
 	{
 		if (eat(philo) != 0)

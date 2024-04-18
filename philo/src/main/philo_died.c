@@ -2,7 +2,6 @@
 
 int	philo_died(t_philo *philo)
 {
-	//philo->data potential issue
 	if (get_time() - get_last_eat_time(philo) > get_die_time(philo->data) && \
         get_philo_state(philo) != EATING)
 	{

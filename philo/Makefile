@@ -84,7 +84,7 @@ $(NAME): $(OBJS)
 
 $(OBJS): $(HEADERS) Makefile
 
-sanitize: $(OBJS)
+sanitize: fclean print_info $(OBJS)
 	@cc $(OBJS) -fsanitize=thread -o $(NAME)
 
 .c.o:
@@ -114,4 +114,4 @@ print_name:
 	@printf "%b" "$(BLUE)"
 	@echo "Philosophers\n"
 
-.PHONY: all clean fclean re sanitize bonus print_name print_info
+.PHONY: all clean fclean re sanitize print_name print_info

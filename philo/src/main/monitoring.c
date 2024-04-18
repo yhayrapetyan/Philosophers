@@ -18,10 +18,10 @@ static void	stop_processes(t_data *data)
 
 void	*alive_monitoring(void *data_p)
 {
-	int 	i;
-	int 	nb_philos;
-	t_data	*data;
-	t_philo *philos;
+	int 		i;
+	int 		nb_philos;
+	t_data		*data;
+	t_philo 	*philos;
 
 	data = (t_data *)data_p;
 	philos = (t_philo *)data->philos;
@@ -36,8 +36,7 @@ void	*alive_monitoring(void *data_p)
 			data->can_iterate = 0;
 			stop_processes(data);
 			data->can_print = 1;
-			write(1, "philo is dead\n", 14);
-//			printf("%lu %d %s\n",  get_time() - get_start_time(data), i + 1, DIED);
+			printf("%lu %d %s\n",  get_time() - get_start_time(data), i + 1, DIED);//valgrind show data race because of printf, with write no problem.
 			pthread_mutex_unlock(&data->mut_iteration);
 			break ;
 		}
