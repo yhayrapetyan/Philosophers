@@ -25,7 +25,7 @@ void	*alive_monitoring(void *data_p)
 	while (i < nb_philos && can_iterate(data) == 1)
 	{
 		pthread_mutex_lock(&data->mut_iteration);
-		if (data->can_iterate && philo_died(&philos[i]))
+		if (data->can_iterate && (philo_died(&philos[i]) || get_philo_state(&philos[i]) == DEAD))
 		{
 			notify_philo_died(data, i + 1);
 			pthread_mutex_unlock(&data->mut_iteration);
@@ -33,7 +33,7 @@ void	*alive_monitoring(void *data_p)
 		}
 		pthread_mutex_unlock(&data->mut_iteration);
 		if (i == nb_philos - 1)
-			i = 0;
+			i = -1;
 		i++;
 		usleep(500);
 	}
@@ -65,7 +65,7 @@ void	*full_monitoring(void *data_p)
 	{
 		usleep(500);
 		if (!is_philo_full(data, &data->philos[i])) {
-			i = 0;
+			i = -1;
 		}
 		i++;
 	}

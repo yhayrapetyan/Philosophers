@@ -1,9 +1,18 @@
 #include "philo.h"
 
+static int	handle_1_philo(t_philo *philo)
+{
+	take_left_fork(philo);
+	ft_usleep(get_die_time(philo->data));
+	set_philo_state(philo, DEAD);
+	pthread_mutex_unlock(philo->l_fork);
+	return (1);
+}
+
 int	take_forks(t_philo *philo)
 {
 	if (get_nb_philos(philo->data) == 1)
-		return (1);//need to handle 1 philo
+		return (handle_1_philo(philo));
 	if (philo->id % 2 == 0)
 	{
 		if (take_right_fork(philo) != 0)
