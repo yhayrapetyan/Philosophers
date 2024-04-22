@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	ft_usleep(uint64_t sleep_time)
 {

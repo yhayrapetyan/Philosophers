@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	ft_error(char *message, int status)
 {

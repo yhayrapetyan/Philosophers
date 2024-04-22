@@ -1,14 +1,15 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
-void		print_message(t_data *data, int id, char *message)
+int	print_message(t_data *data, char *message)
 {
-	uint64_t	time;
-	int 		can_prt;
-
-	time = get_time() - get_start_time(data);
-	can_prt = can_print(data);
-	pthread_mutex_lock(&data->mut_print);
-	if (can_prt == 1 && get_philo_state(&data->philos[id - 1]) != DEAD)
-		printf("%lu %d %s\n", time, id, message);
-	pthread_mutex_unlock(&data->mut_print);
+	sem_wait(data->sem_print);
+	if (someone_died())
+	{
+		sem_post(data->sem_print);
+		return (1);
+	}
+	printf("%llu %d %s\n", get_time() - data->start_time,
+		data->philo.id, message);
+	sem_post(data->sem_print);
+	return (0);
 }

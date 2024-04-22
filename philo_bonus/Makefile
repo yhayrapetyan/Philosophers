@@ -1,43 +1,33 @@
-SRC =			philo.c \
+SRC =			eat.c \
+				fork_utils.c \
+				init_data.c \
 				monitoring.c \
+				philo_bonus.c \
+				philo_sleep.c \
 				routine.c \
 				clean_data.c \
-				eat.c \
-				think.c \
-				fork_utils.c \
-				philo_sleep.c \
-				philo_died.c \
-				init_data.c \
-				stop_processes.c
+				think.c
 
-HELPERS_SRC = 	print_instructions.c \
+HELPERS_SRC = 	ft_atoi.c \
 				ft_error.c \
+				ft_itoa.c \
+				ft_strjoin.c \
 				ft_strlen.c \
-				print_message.c \
-				ft_atoi.c \
 				ft_usleep.c \
+				print_instructions.c \
+				print_message.c
 
-GETTERS_SRC = 	get_time.c \
-				can_print.c \
-                get_die_time.c \
-                get_eat_time.c \
-                get_last_eat_time.c \
-                get_nb_philos.c \
-                get_philo_state.c \
-                get_sleep_time.c \
-                get_start_time.c \
-                can_iterate.c \
-                get_nb_meals.c
+GETTERS_SRC = 	get_last_eat_time.c \
+				get_philo_state.c \
+				get_time.c
 
 SETTERS_SRC = 	set_philo_state.c \
-				update_last_meal_time.c \
-				update_number_meals_had.c
-
+				update_last_meal_time.c
 
 VALIDATION_SRC = 	check_input.c
 
-HEADERS = 	philo_utils.h \
-			philo.h
+HEADERS = 	philo_bonus_utils.h \
+			philo_bonus.h
 
 SRC_DIR = ./src/main/
 HELPERS_DIR = ./src/helpers/

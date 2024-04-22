@@ -1,6 +1,11 @@
 #ifndef PHILO_BONUS_UTILS_H
 #define PHILO_BONUS_UTILS_H
 
+# define RED "\033[1;31m"
+# define YELLOW "\033[1;33m"
+# define RESET_COLOR "\033[0m"
+# define GREEN "\033[1;32m"
+
 # include <unistd.h>
 # include <pthread.h>
 # include <stdio.h>
@@ -40,7 +45,7 @@ typedef struct s_philo
 	t_state			state;
 	u_int64_t		last_eat_time;
 	sem_t			*sem_philo;
-}t_philo;
+}	t_philo;
 
 typedef struct s_data
 {
@@ -54,6 +59,6 @@ typedef struct s_data
 	sem_t			*sem_print;
 	pthread_t		monitor;
 	t_philo			philo;
-}t_data;
+}	t_data;
 
 #endif

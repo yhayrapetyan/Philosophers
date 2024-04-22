@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	print_instructions(void)
 {
