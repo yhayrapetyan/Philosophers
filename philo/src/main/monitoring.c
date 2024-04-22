@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitoring.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 13:51:55 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/22 13:51:57 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 static void	notify_philo_died(t_data *data, int id)
@@ -7,16 +19,17 @@ static void	notify_philo_died(t_data *data, int id)
 	stop_processes(data);
 	data->can_print = 1;
 	pthread_mutex_lock(&data->mut_print);
-	printf("%lu %d %s\n",  get_time() - get_start_time(data), id, DIED);
+	printf("%llu %d %s\n", get_time() - get_start_time(data), id, DIED);
 	pthread_mutex_unlock(&data->mut_print);
+	pthread_mutex_unlock(&data->mut_iteration);
 }
 
 void	*alive_monitoring(void *data_p)
 {
-	int 		i;
-	int 		nb_philos;
+	int			i;
+	int			nb_philos;
 	t_data		*data;
-	t_philo 	*philos;
+	t_philo		*philos;
 
 	data = (t_data *)data_p;
 	philos = (t_philo *)data->philos;
@@ -25,10 +38,10 @@ void	*alive_monitoring(void *data_p)
 	while (i < nb_philos && can_iterate(data) == 1)
 	{
 		pthread_mutex_lock(&data->mut_iteration);
-		if (data->can_iterate && (philo_died(&philos[i]) || get_philo_state(&philos[i]) == DEAD))
+		if (data->can_iterate && (philo_died(&philos[i]) || \
+			get_philo_state(&philos[i]) == DEAD))
 		{
 			notify_philo_died(data, i + 1);
-			pthread_mutex_unlock(&data->mut_iteration);
 			break ;
 		}
 		pthread_mutex_unlock(&data->mut_iteration);
@@ -40,7 +53,7 @@ void	*alive_monitoring(void *data_p)
 	return (NULL);
 }
 
-static int is_philo_full(t_data *data, t_philo *philo)
+static int	is_philo_full(t_data *data, t_philo *philo)
 {
 	int	nb_meals_philo_had;
 
@@ -54,9 +67,9 @@ static int is_philo_full(t_data *data, t_philo *philo)
 
 void	*full_monitoring(void *data_p)
 {
-	int 	i;
+	int		i;
 	t_data	*data;
-	int 	nb_philos;
+	int		nb_philos;
 
 	i = 0;
 	data = (t_data *)data_p;
@@ -64,9 +77,8 @@ void	*full_monitoring(void *data_p)
 	while (i < nb_philos && can_iterate(data))
 	{
 		usleep(500);
-		if (!is_philo_full(data, &data->philos[i])) {
+		if (!is_philo_full(data, &data->philos[i]))
 			i = -1;
-		}
 		i++;
 	}
 	if (can_iterate(data))

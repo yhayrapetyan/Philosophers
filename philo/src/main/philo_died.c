@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_died.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 13:52:12 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/22 13:52:14 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	philo_died(t_philo *philo)
 {
 	if (get_time() - get_last_eat_time(philo) > get_die_time(philo->data) && \
-        get_philo_state(philo) != EATING)
+		get_philo_state(philo) != EATING)
 	{
 		set_philo_state(philo, DEAD);
 		return (1);

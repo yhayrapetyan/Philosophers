@@ -1,31 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 13:52:03 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/22 13:52:05 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	create_threads(t_data *data)
 {
-	int i;
-	int nb_philos;
+	int	i;
+	int	nb_philos;
 
 	i = 0;
 	nb_philos = get_nb_philos(data);
 	data->start_time = get_time();
 	if (pthread_create(&data->alive_monit, NULL, &alive_monitoring, data))
-			return ;
-	if (get_nb_meals(data) != -1 && pthread_create(&data->full_monit, NULL, &full_monitoring, data))
+		return ;
+	if (get_nb_meals(data) != -1 && \
+		pthread_create(&data->full_monit, NULL, &full_monitoring, data))
 		return ;
 	while (i < nb_philos)
 	{
-		if (pthread_create(&data->philo_ths[i], NULL, &routine, &data->philos[i])) {
+		if (pthread_create(&data->philo_ths[i], NULL,
+				&routine, &data->philos[i]))
 			return ;
-		}
 		i++;
 	}
 }
 
 void	join_threads(t_data *data)
 {
-	int i;
-	int nb_meals;
-	int nb_philos;
+	int	i;
+	int	nb_meals;
+	int	nb_philos;
 
 	i = 0;
 	nb_meals = get_nb_meals(data);

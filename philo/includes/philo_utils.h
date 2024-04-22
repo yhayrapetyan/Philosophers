@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 13:47:06 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/22 13:47:08 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILO_UTILS_H
-#define PHILO_UTILS_H
+# define PHILO_UTILS_H
 
 # define RED "\033[1;31m"
 # define YELLOW "\033[1;33m"
@@ -51,8 +62,8 @@ typedef struct s_data
 	int					nb_philos;
 	int					nb_meals;
 	int					full_p;
-	int 				can_print;
-	int 				can_iterate;
+	int					can_print;
+	int					can_iterate;
 	u_int64_t			eat_time;
 	u_int64_t			die_time;
 	u_int64_t			sleep_time;
