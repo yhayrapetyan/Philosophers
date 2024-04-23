@@ -13,7 +13,7 @@ void	init_philo(t_data *data, int id)
 	sem_unlink(philo_id);
 	data->philo.sem_philo = sem_open(philo_id, O_CREAT, 0644, 1);
 	// sem_unlink(philo_id);
-	free(sem_unlink);
+	free(philo_id);
 	data->philo.id = id;
 	update_last_meal_time(data);
 }

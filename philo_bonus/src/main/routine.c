@@ -13,6 +13,7 @@ int	should_stop(t_state	state)
 
 void	routine(t_data *data, int id)
 {
+	// printf("✅✅✅ i = %d\n", id);
 	init_philo(data, id);
 	if (data->philo.id % 2 == 0)
 		ft_usleep(data->eat_time - 10);

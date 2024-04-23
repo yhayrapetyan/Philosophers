@@ -6,11 +6,15 @@ static void	start_processes(t_data *data)
 	int		i;
 
 	i = 0;
+	data->start_time = get_time();
 	while (i < data->nb_philos)
 	{
 		pid = fork();
 		if (pid == 0)
+		{
 			routine(data, i);
+			return ;
+		}
 		else if (pid == -1)
 		{
 			clean_data(data);

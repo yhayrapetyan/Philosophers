@@ -48,7 +48,7 @@ void	*alive_monitoring(void *data_p)
 		if (i == nb_philos - 1)
 			i = -1;
 		i++;
-		usleep(500);
+		// usleep(500);
 	}
 	return (NULL);
 }

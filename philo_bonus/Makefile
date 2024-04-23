@@ -75,7 +75,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: fclean print_info $(OBJS)
-	@cc $(OBJS) -fsanitize=thread -o $(NAME)
+	@cc $(OBJS) -fsanitize=address -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
