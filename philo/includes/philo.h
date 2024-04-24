@@ -20,13 +20,9 @@ int			check_input(int ac, char **av);
 
 //HELPERS
 void		print_message(t_data *data, int id, char *message);
-void		init_data(t_data *data, int ac, char **av);
-void		ft_error(char *message, int status);
+int 		ft_error(char *message);
 void		ft_usleep(uint64_t sleep_time);
-void		init_philos(t_data *data);
 int			print_instructions(void);
-void		init_forks(t_data *data);
-void		clean_data(t_data *data);
 int			ft_strlen(char *str);
 int			ft_atoi(char *str);
 
@@ -49,6 +45,7 @@ void		update_number_meals_had(t_philo *philo);
 void		update_last_meal_time(t_philo *philo);
 
 //MAIN
+int			init_data(t_data *data, int ac, char **av);
 int			take_right_fork(t_philo *philo);
 void		*alive_monitoring(void *data_p);
 void		*full_monitoring(void *data_p);
@@ -58,6 +55,9 @@ int			philo_sleep(t_philo *philo);
 int			take_forks(t_philo *philo);
 void		drop_forks(t_philo *philo);
 int			philo_died(t_philo *philo);
+void		init_philos(t_data *data);
+void		init_forks(t_data *data);
+void		clean_data(t_data *data);
 void		*routine(void *philo_p);
 int			think(t_philo *philo);
 int			eat(t_philo *philo);

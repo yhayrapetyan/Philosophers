@@ -35,7 +35,7 @@ void	*alive_monitoring(void *data_p)
 			{
 				set_philo_state(data, DEAD);
 				sem_open("/death", O_CREAT, 0644, 0);
-				printf("%llu %d %s\n", get_time() - data->start_time,
+				printf("%lu %d %s\n", get_time() - data->start_time,
 					data->philo.id, DIED);
 				sem_post(data->sem_print);
 				break ;

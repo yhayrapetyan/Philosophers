@@ -54,27 +54,28 @@ void	init_philos(t_data *data)
 	}
 }
 
-static void	allocate_memory(t_data *data)
+static int	allocate_memory(t_data *data)
 {
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->nb_philos);
 	if (data->philos == NULL)
-		ft_error("Allocation Fails\n", 17);
+		return (ft_error("Allocation Fails\n"));
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (data->forks == NULL)
 	{
 		free(data->philos);
-		ft_error("Allocation Fails\n", 17);
+		return (ft_error("Allocation Fails\n"));
 	}
 	data->philo_ths = (pthread_t *)malloc(sizeof(pthread_t) * data->nb_philos);
 	if (data->philo_ths == NULL)
 	{
 		free(data->philos);
 		free(data->forks);
-		ft_error("Allocation Fails\n", 17);
+		return (ft_error("Allocation Fails\n"));
 	}
+	return (0);
 }
 
-void	init_data(t_data *data, int ac, char **av)
+int	init_data(t_data *data, int ac, char **av)
 {
 	data->nb_philos = ft_atoi(av[1]);
 	data->nb_meals = -1;
@@ -89,5 +90,5 @@ void	init_data(t_data *data, int ac, char **av)
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_iteration, NULL);
 	pthread_mutex_init(&data->mut_getter, NULL);
-	allocate_memory(data);
+	return (allocate_memory(data));
 }

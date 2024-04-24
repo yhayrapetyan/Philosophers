@@ -61,7 +61,8 @@ int	main(int ac, char **av)
 
 	if (check_input(ac, av) != 0)
 		return (print_instructions());
-	init_data(&data, ac, av);
+	if (init_data(&data, ac, av) != 0)
+		return (1);
 	init_philos(&data);
 	init_forks(&data);
 	create_threads(&data);
