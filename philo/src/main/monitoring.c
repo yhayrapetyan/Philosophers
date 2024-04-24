@@ -19,7 +19,7 @@ static void	notify_philo_died(t_data *data, int id)
 	stop_processes(data);
 	data->can_print = 1;
 	pthread_mutex_lock(&data->mut_print);
-	printf("%llu %d %s\n", get_time() - get_start_time(data), id, DIED);
+	printf("%lu %d %s\n", get_time() - get_start_time(data), id, DIED);
 	pthread_mutex_unlock(&data->mut_print);
 	pthread_mutex_unlock(&data->mut_iteration);
 }
@@ -48,7 +48,7 @@ void	*alive_monitoring(void *data_p)
 		if (i == nb_philos - 1)
 			i = -1;
 		i++;
-		// usleep(500);
+		 usleep(1000);
 	}
 	return (NULL);
 }
@@ -57,9 +57,9 @@ static int	is_philo_full(t_data *data, t_philo *philo)
 {
 	int	nb_meals_philo_had;
 
-	pthread_mutex_lock(&philo->mut_meals_had);
+	pthread_mutex_lock(&philo->mut_philo);
 	nb_meals_philo_had = philo->meals_had;
-	pthread_mutex_unlock(&philo->mut_meals_had);
+	pthread_mutex_unlock(&philo->mut_philo);
 	if (nb_meals_philo_had >= get_nb_meals(data))
 		return (1);
 	return (0);

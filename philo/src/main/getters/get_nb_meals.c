@@ -16,8 +16,8 @@ int	get_nb_meals(t_data *data)
 {
 	int	nb_meals;
 
-	pthread_mutex_lock(&data->mut_nb_meals);
+	pthread_mutex_lock(&data->mut_getter);
 	nb_meals = data->nb_meals;
-	pthread_mutex_unlock(&data->mut_nb_meals);
+	pthread_mutex_unlock(&data->mut_getter);
 	return (nb_meals);
 }

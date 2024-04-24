@@ -16,8 +16,8 @@ t_state	get_philo_state(t_philo *philo)
 {
 	t_state	state;
 
-	pthread_mutex_lock(&philo->mut_state);
+	pthread_mutex_lock(&philo->mut_philo);
 	state = philo->state;
-	pthread_mutex_unlock(&philo->mut_state);
+	pthread_mutex_unlock(&philo->mut_philo);
 	return (state);
 }

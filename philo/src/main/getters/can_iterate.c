@@ -16,8 +16,8 @@ int	can_iterate(t_data *data)
 {
 	int	can_iterate;
 
-	pthread_mutex_lock(&data->mut_iteration);
+	pthread_mutex_lock(&data->mut_getter);
 	can_iterate = data->can_iterate;
-	pthread_mutex_unlock(&data->mut_iteration);
+	pthread_mutex_unlock(&data->mut_getter);
 	return (can_iterate);
 }

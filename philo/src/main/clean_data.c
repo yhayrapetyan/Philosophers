@@ -20,19 +20,12 @@ void	clean_data(t_data *data)
 	while (i < data->nb_philos)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philos[i].mut_state);
-		pthread_mutex_destroy(&data->philos[i].mut_meals_had);
-		pthread_mutex_destroy(&data->philos[i].mut_last_eat_time);
+		pthread_mutex_destroy(&data->philos[i].mut_philo);
 		i++;
 	}
 	pthread_mutex_destroy(&data->mut_iteration);
 	pthread_mutex_destroy(&data->mut_print);
-	pthread_mutex_destroy(&data->mut_eat_time);
-	pthread_mutex_destroy(&data->mut_nb_philos);
-	pthread_mutex_destroy(&data->mut_sleep_time);
-	pthread_mutex_destroy(&data->mut_die_time);
-	pthread_mutex_destroy(&data->mut_start_time);
-	pthread_mutex_destroy(&data->mut_nb_meals);
+	pthread_mutex_destroy(&data->mut_getter);
 	free(data->philo_ths);
 	free(data->philos);
 	free(data->forks);
