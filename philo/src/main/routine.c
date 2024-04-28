@@ -23,12 +23,12 @@ void	*routine(void *philo_p)
 	{
 		if (eat(philo) != 0)
 			break ;
-		if (get_philo_state(philo) == DEAD)
-			break ;
+//		if (get_philo_state(philo) == DEAD)
+//			break ;
 		if (philo_sleep(philo) != 0)
 			break ;
-		if (get_philo_state(philo) == DEAD)
-			break ;
+//		if (get_philo_state(philo) == DEAD)
+//			break ;
 		if (think(philo) != 0)
 			break ;
 	}
