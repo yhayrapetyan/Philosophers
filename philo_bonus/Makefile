@@ -19,6 +19,8 @@ HELPERS_SRC = 	ft_atoi.c \
 
 GETTERS_SRC = 	get_last_eat_time.c \
 				get_philo_state.c \
+				get_start_time.c \
+				get_die_time.c \
 				get_time.c
 
 SETTERS_SRC = 	set_philo_state.c \
@@ -75,7 +77,7 @@ $(NAME): $(OBJS)
 $(OBJS): $(HEADERS) Makefile
 
 sanitize: fclean print_info $(OBJS)
-	@cc $(OBJS) -fsanitize=address -o $(NAME)
+	@cc $(OBJS) -fsanitize=thread -o $(NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))

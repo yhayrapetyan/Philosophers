@@ -24,16 +24,20 @@ void		update_last_meal_time(t_data *data);
 //GETTERS
 uint64_t	get_last_eat_time(t_data *data);
 t_state		get_philo_state(t_data *data);
+uint64_t	get_start_time(t_data *data);
+uint64_t	get_die_time(t_data *data);
 u_int64_t	get_time(void);
 
 //MAIN
 int			init_data(t_data *data, int ac, char **av);
-void		init_philo(t_data *data, int id);
+char		*init_philo(t_data *data, int id);
+void		clean_data(t_data *data, int process_id);
+int 		routine(t_data *data, int id, int pid);
+//void		routine(t_data *data, int id, int pid);
+//void		init_philo(t_data *data, int id);
 void		*alive_monitoring(void *data_p);
-void		routine(t_data *data, int id);
 int			should_stop(t_state	state);
 int			philo_sleep(t_data *data);
-void		clean_data(t_data *data);
 int			take_forks(t_data *data);
 int			drop_forks(t_data *data);
 int			think(t_data *data);

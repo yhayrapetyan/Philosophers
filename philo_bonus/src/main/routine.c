@@ -11,18 +11,20 @@ int	should_stop(t_state	state)
 	return (0);
 }
 
-void	routine(t_data *data, int id)
+int	routine(t_data *data, int id, int pid)
 {
+	char	*philo_id;
 	// printf("✅✅✅ i = %d\n", id);
-	init_philo(data, id);
+
+	philo_id = init_philo(data, id);
 	if (data->philo.id % 2 == 0)
-		ft_usleep(data->eat_time - 10);
+		ft_usleep(data->eat_time);
 	if (pthread_create(&data->monitor, NULL, &alive_monitoring, data))
 	{
-		clean_data(data);
+		clean_data(data, 0);//id!!
 		ft_error("Thread create failed\n", 19);
 	}
-	while (1)
+	while (!someone_died())
 	{
 		if (eat(data) || should_stop(get_philo_state(data)))
 			break ;
@@ -33,8 +35,16 @@ void	routine(t_data *data, int id)
 	}
 	if (pthread_join(data->monitor, NULL))
 	{
-		clean_data(data);
+		clean_data(data, 0);//id~~
 		ft_error("Thread join failed\n", 19);
 	}
+	int state = get_philo_state(data);
 	sem_close(data->philo.sem_philo);
+	sem_unlink(philo_id);
+	free(philo_id);
+	printf("END ROUTINE id = %d\n", pid);
+	if (state == DEAD) {
+		return (1);
+	}
+	return (0);
 }

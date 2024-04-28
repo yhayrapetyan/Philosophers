@@ -4,7 +4,7 @@ int	someone_died(void)
 {
 	sem_t	*death;
 
-	death = sem_open("/death", AT_EACCESS, 0);
+	death = sem_open("/death", AT_EACCESS,  0644, 0);
 	if (death == SEM_FAILED)
 		return (0);
 	sem_close(death);
@@ -14,9 +14,19 @@ int	someone_died(void)
 static int	philo_died(t_data *data)
 {
 	if (get_philo_state(data) != EATING
-		&& get_time() - get_last_eat_time(data) > data->die_time)
+		&& get_time() - get_last_eat_time(data) > get_die_time(data))
 		return (1);
 	return (0);
+}
+
+int	get_id(t_data *data)
+{
+	int	id;
+
+	sem_wait(data->sem_data);
+	id = data->philo.id;
+	sem_post(data->sem_data);
+	return (id);
 }
 
 void	*alive_monitoring(void *data_p)
@@ -35,14 +45,17 @@ void	*alive_monitoring(void *data_p)
 			{
 				set_philo_state(data, DEAD);
 				sem_open("/death", O_CREAT, 0644, 0);
-				printf("%lu %d %s\n", get_time() - data->start_time,
-					data->philo.id, DIED);
+				printf("%lu %d %s\n", get_time() - get_start_time(data),
+					get_id(data), DIED);
+//					   data->philo.id, DIED);
 				sem_post(data->sem_print);
+				printf("BREAKING %d\n", data->philo.id);
 				break ;
 			}
 			sem_post(data->sem_print);
 		}
-		usleep(500);
+		usleep(1000);
 	}
+	printf("END MONITORING\n");
 	return (NULL);
 }

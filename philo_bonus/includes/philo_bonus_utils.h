@@ -57,6 +57,7 @@ typedef struct s_data
 	u_int64_t		start_time;
 	sem_t			*sem_forks;
 	sem_t			*sem_print;
+	sem_t			*sem_data;
 	pthread_t		monitor;
 	t_philo			philo;
 }	t_data;
