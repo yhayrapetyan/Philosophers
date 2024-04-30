@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:47:01 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/22 13:47:02 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:35:23 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			check_input(int ac, char **av);
 
 //HELPERS
 void		print_message(t_data *data, int id, char *message);
-int 		ft_error(char *message);
+int			ft_error(char *message);
 void		ft_usleep(uint64_t sleep_time);
 int			print_instructions(void);
 int			ft_strlen(char *str);
