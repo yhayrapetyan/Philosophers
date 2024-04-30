@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/30 16:43:20 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/30 16:43:31 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 int	should_stop(t_state	state)
@@ -11,10 +23,9 @@ int	should_stop(t_state	state)
 	return (0);
 }
 
-int	routine(t_data *data, int id, int pid)
+int	routine(t_data *data, int id)
 {
 	char	*philo_id;
-	// printf("✅✅✅ i = %d\n", id);
 
 	philo_id = init_philo(data, id);
 	if (data->philo.id % 2 == 0)
@@ -26,7 +37,6 @@ int	routine(t_data *data, int id, int pid)
 	}
 	while (!someone_died())
 	{
-		// printf("AA\n");
 		if (eat(data) || should_stop(get_philo_state(data)))
 			break ;
 		if (philo_sleep(data) || should_stop(get_philo_state(data)))
@@ -39,14 +49,8 @@ int	routine(t_data *data, int id, int pid)
 		clean_data(data, 0);//id~~
 		ft_error("Thread join failed\n", 19);
 	}
-	// int state = get_philo_state(data);
 	sem_close(data->philo.sem_philo);
 	sem_unlink(philo_id);
 	free(philo_id);
-	(void)pid;
-	// printf("END ROUTINE id = %d\n", pid);
-	// if (state == DEAD) {
-	// 	return (1);
-	// }
 	return (0);
 }

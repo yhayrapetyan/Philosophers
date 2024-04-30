@@ -15,7 +15,7 @@
 char	*init_philo(t_data *data, int id)
 {
 	char	*philo_id;
-	char 	*temp_id;
+	char	*temp_id;
 
 	temp_id = ft_itoa(id);
 	philo_id = ft_strjoin("/philo_", temp_id);
@@ -27,8 +27,6 @@ char	*init_philo(t_data *data, int id)
 	}
 	sem_unlink(philo_id);
 	data->philo.sem_philo = sem_open(philo_id, O_CREAT, 0644, 1);
-//	 sem_unlink(philo_id);//!!!
-//	free(philo_id);
 	data->philo.id = id;
 	update_last_meal_time(data);
 	return (philo_id);
@@ -49,9 +47,6 @@ static int	init_semaphores(t_data *data)
 	data->sem_data = sem_open("/data", O_CREAT, 0644, 1);
 	if (data->sem_data == SEM_FAILED)
 		return (printf("SEM FAILED\n"));
-//	 sem_unlink("/forks");//!!!
-//	 sem_unlink("/print");//!!!
-//	 sem_unlink("/data");//!!!
 	return (0);
 }
 

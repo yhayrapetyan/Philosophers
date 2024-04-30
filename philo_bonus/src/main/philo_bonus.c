@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/30 16:42:01 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/30 16:42:01 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 static int	start_processes(t_data *data)
@@ -12,7 +24,7 @@ static int	start_processes(t_data *data)
 		pid = fork();
 		if (pid == 0)
 		{
-			routine(data, i + 1, i + 1);
+			routine(data, i + 1);
 			return (0);
 		}
 		else if (pid == -1)
@@ -31,19 +43,13 @@ static int	start_processes(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	data;
-	int 	process_id;
+	int		process_id;
 
 	if (check_input(ac, av) != 0)
 		return (print_instructions());
 	if (init_data(&data, ac, av) != 0)
 		return (1);
 	process_id = start_processes(&data);
-	// printf("END PROCEEEEEEEEEEES\n");
 	clean_data(&data, process_id);
-	// printf("CLEAAAAAAAAAAAAAAAAAN\n");
-	// if (process_id == 0)
-	// 	printf("FINISH CHILD\n\n");
-	// else
-	// 	printf("!!!FINISH!!!\n\n\n");
 	return (0);
 }
