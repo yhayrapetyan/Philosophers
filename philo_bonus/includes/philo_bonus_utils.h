@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus_utils.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/30 16:32:17 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/30 16:32:17 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_BONUS_UTILS_H
-#define PHILO_BONUS_UTILS_H
+# define PHILO_BONUS_UTILS_H
 
 # define RED "\033[1;31m"
 # define YELLOW "\033[1;33m"

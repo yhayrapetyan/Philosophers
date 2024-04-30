@@ -38,12 +38,12 @@ int	main(int ac, char **av)
 	if (init_data(&data, ac, av) != 0)
 		return (1);
 	process_id = start_processes(&data);
-	printf("END PROCEEEEEEEEEEES\n");
+	// printf("END PROCEEEEEEEEEEES\n");
 	clean_data(&data, process_id);
-	printf("CLEAAAAAAAAAAAAAAAAAN\n");
-	if (process_id == 0)
-		printf("FINISH CHILD\n\n");
-	else
-		printf("!!!FINISH!!!\n\n\n");
+	// printf("CLEAAAAAAAAAAAAAAAAAN\n");
+	// if (process_id == 0)
+	// 	printf("FINISH CHILD\n\n");
+	// else
+	// 	printf("!!!FINISH!!!\n\n\n");
 	return (0);
 }

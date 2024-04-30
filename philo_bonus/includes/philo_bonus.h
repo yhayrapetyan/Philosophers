@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/30 16:32:09 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/04/30 16:32:09 by yuhayrap         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
-#define PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # include "philo_bonus_utils.h"
 
@@ -32,7 +43,7 @@ u_int64_t	get_time(void);
 int			init_data(t_data *data, int ac, char **av);
 char		*init_philo(t_data *data, int id);
 void		clean_data(t_data *data, int process_id);
-int 		routine(t_data *data, int id, int pid);
+int			routine(t_data *data, int id, int pid);
 //void		routine(t_data *data, int id, int pid);
 //void		init_philo(t_data *data, int id);
 void		*alive_monitoring(void *data_p);
