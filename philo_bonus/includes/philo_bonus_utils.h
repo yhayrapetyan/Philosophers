@@ -70,6 +70,7 @@ typedef struct s_data
 	sem_t			*sem_forks;
 	sem_t			*sem_print;
 	sem_t			*sem_data;
+	sem_t			*sem_death;
 	pthread_t		monitor;
 	t_philo			philo;
 }	t_data;

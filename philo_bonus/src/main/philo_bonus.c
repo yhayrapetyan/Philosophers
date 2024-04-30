@@ -29,7 +29,7 @@ static int	start_processes(t_data *data)
 		}
 		else if (pid == -1)
 		{
-			clean_data(data, 0);//id!!!!
+			clean_data(data, 0);
 			ft_error("Fork failed\n", 17);
 		}
 		i++;

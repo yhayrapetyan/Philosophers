@@ -43,10 +43,18 @@ static int	init_semaphores(t_data *data)
 		return (printf("SEM FAILED\n"));
 	data->sem_print = sem_open("/print", O_CREAT, 0644, 1);
 	if (data->sem_print == SEM_FAILED)
+	{
+		sem_close(data->sem_forks);
 		return (printf("SEM FAILED\n"));
+	}
 	data->sem_data = sem_open("/data", O_CREAT, 0644, 1);
 	if (data->sem_data == SEM_FAILED)
+	{
+		sem_close(data->sem_forks);
+		sem_close(data->sem_data);
 		return (printf("SEM FAILED\n"));
+	}
+	data->sem_death = NULL;
 	return (0);
 }
 

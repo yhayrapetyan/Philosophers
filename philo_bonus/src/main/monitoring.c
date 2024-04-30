@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:41:50 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 16:41:51 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:06:34 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*alive_monitoring(void *data_p)
 			if (philo_died(data) && someone_died() == 0)
 			{
 				set_philo_state(data, DEAD);
-				sem_open("/death", O_CREAT, 0644, 0);
+				data->sem_death = sem_open("/death", O_CREAT, 0644, 0);
 				printf("%llu %d %s\n", get_time() - get_start_time(data),
 					get_id(data), DIED);
 				sem_post(data->sem_print);

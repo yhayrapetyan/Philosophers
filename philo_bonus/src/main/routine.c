@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:43:20 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 16:43:31 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:09:51 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,8 @@ int	should_stop(t_state	state)
 	return (0);
 }
 
-int	routine(t_data *data, int id)
+static void	simulation(t_data *data)
 {
-	char	*philo_id;
-
-	philo_id = init_philo(data, id);
-	if (data->philo.id % 2 == 0)
-		ft_usleep(data->eat_time);
-	if (pthread_create(&data->monitor, NULL, &alive_monitoring, data))
-	{
-		clean_data(data, 0);//id!!
-		ft_error("Thread create failed\n", 19);
-	}
 	while (!someone_died())
 	{
 		if (eat(data) || should_stop(get_philo_state(data)))
@@ -44,9 +34,24 @@ int	routine(t_data *data, int id)
 		if (think(data) || should_stop(get_philo_state(data)))
 			break ;
 	}
+}
+
+int	routine(t_data *data, int id)
+{
+	char	*philo_id;
+
+	philo_id = init_philo(data, id);
+	if (data->philo.id % 2 == 0)
+		ft_usleep(data->eat_time);
+	if (pthread_create(&data->monitor, NULL, &alive_monitoring, data))
+	{
+		clean_data(data, 0);
+		ft_error("Thread create failed\n", 19);
+	}
+	simulation(data);
 	if (pthread_join(data->monitor, NULL))
 	{
-		clean_data(data, 0);//id~~
+		clean_data(data, 1);
 		ft_error("Thread join failed\n", 19);
 	}
 	sem_close(data->philo.sem_philo);
