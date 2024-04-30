@@ -22,7 +22,8 @@ char	*init_philo(t_data *data, int id)
 	free(temp_id);
 	if (!philo_id)
 	{
-		clean_data(data, 1);//need to check id
+		clean_data(data, 0);
+		free(philo_id);
 		ft_error("Allocation failed\n", 18);
 	}
 	sem_unlink(philo_id);

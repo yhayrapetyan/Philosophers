@@ -6,22 +6,11 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:43:20 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 17:09:51 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:45:05 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
-int	should_stop(t_state	state)
-{
-	if (state == DEAD)
-		return (1);
-	if (state == FINISH)
-		return (1);
-	if (state == FULL)
-		return (1);
-	return (0);
-}
 
 static void	simulation(t_data *data)
 {
