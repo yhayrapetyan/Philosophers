@@ -45,8 +45,8 @@ void	*alive_monitoring(void *data_p)
 			break ;
 		}
 		pthread_mutex_unlock(&data->mut_iteration);
-		if (i == nb_philos - 1)
-			i = -1;
+		// if (i == nb_philos - 1)
+		// 	i = -1;
 		i++;
 		usleep(1000);
 	}
@@ -73,6 +73,9 @@ void	*full_monitoring(void *data_p)
 
 	i = 0;
 	data = (t_data *)data_p;
+
+	if (data->nb_meals == -1)
+		return ("");
 	nb_philos = get_nb_philos(data);
 	while (i < nb_philos && can_iterate(data))
 	{

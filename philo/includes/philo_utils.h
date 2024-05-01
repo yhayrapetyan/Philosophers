@@ -71,8 +71,6 @@ typedef struct s_data
 	pthread_mutex_t		mut_getter;
 	pthread_mutex_t		*forks;
 	pthread_t			*philo_ths;
-	pthread_t			alive_monit;
-	pthread_t			full_monit;
 	t_philo				*philos;
 }	t_data;
 

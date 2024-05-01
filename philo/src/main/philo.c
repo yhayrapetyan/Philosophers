@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:03 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/22 13:52:05 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:13:07 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	create_threads(t_data *data)
 	i = 0;
 	nb_philos = get_nb_philos(data);
 	data->start_time = get_time();
-	if (pthread_create(&data->alive_monit, NULL, &alive_monitoring, data))
-		return ;
-	if (get_nb_meals(data) != -1 && \
-		pthread_create(&data->full_monit, NULL, &full_monitoring, data))
-		return ;
 	while (i < nb_philos)
 	{
 		if (pthread_create(&data->philo_ths[i], NULL,
@@ -43,10 +38,6 @@ void	join_threads(t_data *data)
 	i = 0;
 	nb_meals = get_nb_meals(data);
 	nb_philos = get_nb_philos(data);
-	if (pthread_join(data->alive_monit, NULL))
-		return ;
-	if (nb_meals != -1 && pthread_join(data->full_monit, NULL))
-		return ;
 	while (i < nb_philos)
 	{
 		if (pthread_join(data->philo_ths[i], NULL))
@@ -66,6 +57,14 @@ int	main(int ac, char **av)
 	init_philos(&data);
 	init_forks(&data);
 	create_threads(&data);
+	while (1)
+	{
+		if (full_monitoring((void *)&data) == NULL || \
+			alive_monitoring((void *)&data) == NULL)
+		// if (alive_monitoring((void *)&data) == NULL || \
+		// 	full_monitoring((void *)&data) == NULL)
+			break ;
+	}
 	join_threads(&data);
 	clean_data(&data);
 	return (0);
