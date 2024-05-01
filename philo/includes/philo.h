@@ -47,8 +47,10 @@ void		update_last_meal_time(t_philo *philo);
 //MAIN
 int			init_data(t_data *data, int ac, char **av);
 int			take_right_fork(t_philo *philo);
-void		*alive_monitoring(void *data_p);
-void		*full_monitoring(void *data_p);
+//void		*alive_monitoring(void *data_p);//old
+int			alive_monitoring(t_data *data);
+//void		*full_monitoring(void *data_p);//old
+int			full_monitoring(t_data *data);
 int			take_left_fork(t_philo *philo);
 void		stop_processes(t_data *data);
 int			philo_sleep(t_philo *philo);

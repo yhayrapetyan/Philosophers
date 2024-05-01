@@ -32,11 +32,9 @@ void	create_threads(t_data *data)
 void	join_threads(t_data *data)
 {
 	int	i;
-	int	nb_meals;
 	int	nb_philos;
 
 	i = 0;
-	nb_meals = get_nb_meals(data);
 	nb_philos = get_nb_philos(data);
 	while (i < nb_philos)
 	{
@@ -59,11 +57,12 @@ int	main(int ac, char **av)
 	create_threads(&data);
 	while (1)
 	{
-		if (full_monitoring((void *)&data) == NULL || \
-			alive_monitoring((void *)&data) == NULL)
-		// if (alive_monitoring((void *)&data) == NULL || \
-		// 	full_monitoring((void *)&data) == NULL)
+//		if (full_monitoring(&data)
+//			alive_monitoring(&data))
+//		printf("START\n");
+		if (alive_monitoring(&data) || full_monitoring(&data))
 			break ;
+//		printf("END\n");
 	}
 	join_threads(&data);
 	clean_data(&data);

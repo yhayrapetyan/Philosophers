@@ -19,38 +19,32 @@ static void	notify_philo_died(t_data *data, int id)
 	stop_processes(data);
 	data->can_print = 1;
 	pthread_mutex_lock(&data->mut_print);
-	printf("%llu %d %s\n", get_time() - get_start_time(data), id, DIED);
+	printf("%lu %d %s\n", get_time() - get_start_time(data), id, DIED);
 	pthread_mutex_unlock(&data->mut_print);
 	pthread_mutex_unlock(&data->mut_iteration);
 }
 
-void	*alive_monitoring(void *data_p)
+int	alive_monitoring(t_data *data)
 {
 	int			i;
 	int			nb_philos;
-	t_data		*data;
 	t_philo		*philos;
 
-	data = (t_data *)data_p;
 	philos = (t_philo *)data->philos;
 	nb_philos = get_nb_philos(data);
 	i = 0;
 	while (i < nb_philos && can_iterate(data) == 1)
 	{
 		pthread_mutex_lock(&data->mut_iteration);
-		if (data->can_iterate && (philo_died(&philos[i]) || \
-			get_philo_state(&philos[i]) == DEAD))
+		if (data->can_iterate && philo_died(&philos[i]))
 		{
 			notify_philo_died(data, i + 1);
-			break ;
+			return (1);
 		}
 		pthread_mutex_unlock(&data->mut_iteration);
-		// if (i == nb_philos - 1)
-		// 	i = -1;
 		i++;
-		usleep(1000);
 	}
-	return (NULL);
+	return (0);
 }
 
 static int	is_philo_full(t_data *data, t_philo *philo)
@@ -65,31 +59,28 @@ static int	is_philo_full(t_data *data, t_philo *philo)
 	return (0);
 }
 
-void	*full_monitoring(void *data_p)
+int	full_monitoring(t_data *data)
 {
 	int		i;
-	t_data	*data;
 	int		nb_philos;
 
 	i = 0;
-	data = (t_data *)data_p;
-
 	if (data->nb_meals == -1)
-		return ("");
+		return (0);
 	nb_philos = get_nb_philos(data);
 	while (i < nb_philos && can_iterate(data))
 	{
-		usleep(500);
 		if (!is_philo_full(data, &data->philos[i]))
-			i = -1;
+			return (0);
 		i++;
 	}
-	if (can_iterate(data))
+	if (can_iterate(data) )
 	{
 		pthread_mutex_lock(&data->mut_iteration);
 		data->can_iterate = 0;
 		pthread_mutex_unlock(&data->mut_iteration);
 		stop_processes(data);
+		return (1);
 	}
-	return (NULL);
+	return (0);
 }
