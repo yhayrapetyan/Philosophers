@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:47:01 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 16:35:23 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:18:16 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,13 @@ void		update_last_meal_time(t_philo *philo);
 
 //MAIN
 int			init_data(t_data *data, int ac, char **av);
-int			take_right_fork(t_philo *philo);
-//void		*alive_monitoring(void *data_p);//old
 int			alive_monitoring(t_data *data);
-//void		*full_monitoring(void *data_p);//old
 int			full_monitoring(t_data *data);
-int			take_left_fork(t_philo *philo);
 void		stop_processes(t_data *data);
-int			philo_sleep(t_philo *philo);
-int			take_forks(t_philo *philo);
-void		drop_forks(t_philo *philo);
-int			philo_died(t_philo *philo);
 void		init_philos(t_data *data);
 void		init_forks(t_data *data);
 void		clean_data(t_data *data);
 void		*routine(void *philo_p);
-int			think(t_philo *philo);
 int			eat(t_philo *philo);
 
 #endif

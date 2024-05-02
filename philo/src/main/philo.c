@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:03 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/05/01 19:13:07 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:08:58 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void	create_threads(t_data *data)
 	data->start_time = get_time();
 	while (i < nb_philos)
 	{
-		if (pthread_create(&data->philo_ths[i], NULL,
-				&routine, &data->philos[i]))
-			return ;
+		// if (pthread_create(&data->philo_ths[i], NULL,
+		// 		&routine, &data->philos[i]))
+			// return ;
+		pthread_create(&data->philo_ths[i], NULL, &routine, &data->philos[i]);
 		i++;
 	}
 }

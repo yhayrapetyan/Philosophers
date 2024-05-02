@@ -14,7 +14,7 @@
 
 int	philo_sleep(t_philo *philo)
 {
-	set_philo_state(philo, SLEEPING);
+	// set_philo_state(philo, SLEEPING);
 	print_message(philo->data, philo->id, SLEEP);
 	ft_usleep(get_sleep_time(philo->data));
 	return (0);

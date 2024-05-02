@@ -22,12 +22,16 @@ void	*routine(void *philo_p)
 		ft_usleep(get_eat_time(philo->data));
 	while (get_philo_state(philo) != DEAD)
 	{
-		if (eat(philo) != 0)
-			break ;
-		if (philo_sleep(philo) != 0)
-			break ;
-		if (think(philo) != 0)
-			break ;
+		eat(philo);
+		print_message(philo->data, philo->id, SLEEP);
+		ft_usleep(get_sleep_time(philo->data));
+		print_message(philo->data, philo->id, THINK);
+		// if (eat(philo) != 0)
+		// 	break ;
+		// if (philo_sleep(philo) != 0)
+		// 	break ;
+		// if (think(philo) != 0)
+		// 	break ;
 	}
 	return (NULL);
 }

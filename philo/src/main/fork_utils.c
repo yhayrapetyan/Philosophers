@@ -25,13 +25,16 @@ int	take_forks(t_philo *philo)
 {
 	if (get_nb_philos(philo->data) == 1)
 		return (handle_1_philo(philo));
-	if (take_right_fork(philo) != 0)
-		return (1);
-	if (take_left_fork(philo) != 0)
-	{
-		pthread_mutex_unlock(philo->r_fork);
-		return (1);
-	}
+	take_right_fork(philo);
+	take_left_fork(philo);
+
+	// if (take_right_fork(philo) != 0)
+	// 	return (1);
+	// if (take_left_fork(philo) != 0)
+	// {
+	// 	pthread_mutex_unlock(philo->r_fork);
+	// 	return (1);
+	// }
 	return (0);
 }
 

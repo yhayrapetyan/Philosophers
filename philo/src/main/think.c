@@ -14,7 +14,7 @@
 
 int	think(t_philo *philo)
 {
-	set_philo_state(philo, THINKING);
+	// set_philo_state(philo, THINKING);
 	print_message(philo->data, philo->id, THINK);
 	return (0);
 }

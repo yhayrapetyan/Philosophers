@@ -3,10 +3,6 @@ SRC =			philo.c \
 				routine.c \
 				clean_data.c \
 				eat.c \
-				think.c \
-				fork_utils.c \
-				philo_sleep.c \
-				philo_died.c \
 				init_data.c \
 				stop_processes.c
 

@@ -14,9 +14,11 @@
 
 int	philo_died(t_philo *philo)
 {
-	if (get_time() - get_last_eat_time(philo) >= get_die_time(philo->data))
+	if (get_time() - get_last_eat_time(philo) > get_die_time(philo->data))
 	{
-		set_philo_state(philo, DEAD);
+		// printf("%d last_eat_t = %llu\n",philo->id, get_time() - get_last_eat_time(philo));
+		// printf("die_t = %llu\n", get_die_time(philo->data));
+		// set_philo_state(philo, DEAD);
 		return (1);
 	}
 	return (0);
