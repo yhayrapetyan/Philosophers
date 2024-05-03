@@ -28,6 +28,13 @@ void	create_threads(t_data *data)
 		pthread_create(&data->philo_ths[i], NULL, &routine, &data->philos[i]);
 		i++;
 	}
+//	printf("======================================\n");
+//	pthread_mutex_lock(&data->mut_getter);
+//	data->can_start = 1;
+//	data->start_time = get_time();
+//	pthread_mutex_unlock(&data->mut_getter);
+//	printf("########################################\n");
+//	printf("END\n");
 }
 
 void	join_threads(t_data *data)

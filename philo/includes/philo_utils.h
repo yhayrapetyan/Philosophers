@@ -62,6 +62,7 @@ typedef struct s_data
 	int					full_p;
 	int					can_print;
 	int					can_iterate;
+	int 				can_start;
 	u_int64_t			eat_time;
 	u_int64_t			die_time;
 	u_int64_t			sleep_time;

@@ -79,6 +79,7 @@ int	init_data(t_data *data, int ac, char **av)
 {
 	data->nb_philos = ft_atoi(av[1]);
 	data->nb_meals = -1;
+	data->can_start = 0;
 	data->full_p = 0;
 	data->can_print = 1;
 	data->can_iterate = 1;

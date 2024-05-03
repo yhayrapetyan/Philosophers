@@ -22,6 +22,6 @@ void	print_message(t_data *data, int id, char *message)
 	pthread_mutex_lock(&data->mut_print);
 	// if (can_prt == 1 && get_philo_state(&data->philos[id - 1]) != DEAD)
 	if (get_philo_state(&data->philos[id - 1]) != DEAD)
-		printf("%llu %d %s\n", time, id, message);
+		printf("%lu %d %s\n", time, id, message);
 	pthread_mutex_unlock(&data->mut_print);
 }
