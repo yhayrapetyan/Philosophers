@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:43:20 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/05/04 18:23:55 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:06:52 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	simulation(t_data *data)
 
 int	routine(t_data *data, int id)
 {
-
 	init_philo(data, id);
 	if (pthread_create(&data->monitor, NULL, &monitoring, data))
 	{
