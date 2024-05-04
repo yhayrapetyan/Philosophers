@@ -12,15 +12,6 @@
 
 #include "philo.h"
 
-static void	notify_philo_died(t_data *data, int id)
-{
-	stop_processes(data);
-	pthread_mutex_lock(&data->mut_print);
-	printf("%llu %d %s\n", get_time() - get_start_time(data), id, DIED);
-	pthread_mutex_unlock(&data->mut_print);
-	pthread_mutex_unlock(&data->mut_iteration);
-}
-
 int	alive_monitoring(t_data *data)
 {
 	int			i;
@@ -35,7 +26,12 @@ int	alive_monitoring(t_data *data)
 		pthread_mutex_lock(&data->mut_iteration);
 		if (get_time() - philos[i].last_eat_time > data->die_time)
 		{
-			notify_philo_died(data, i + 1);
+			stop_processes(data);
+			pthread_mutex_lock(&data->mut_print);
+			printf("%llu %d %s\n",
+				get_time() - get_start_time(data), i + 1, DIED);
+			pthread_mutex_unlock(&data->mut_print);
+			pthread_mutex_unlock(&data->mut_iteration);
 			return (1);
 		}
 		pthread_mutex_unlock(&data->mut_iteration);
