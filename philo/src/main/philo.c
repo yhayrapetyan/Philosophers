@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:03 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/05/02 18:08:58 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:31:06 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,9 @@ void	create_threads(t_data *data)
 	data->start_time = get_time();
 	while (i < nb_philos)
 	{
-		// if (pthread_create(&data->philo_ths[i], NULL,
-		// 		&routine, &data->philos[i]))
-			// return ;
 		pthread_create(&data->philo_ths[i], NULL, &routine, &data->philos[i]);
 		i++;
 	}
-//	printf("======================================\n");
-//	pthread_mutex_lock(&data->mut_getter);
-//	data->can_start = 1;
-//	data->start_time = get_time();
-//	pthread_mutex_unlock(&data->mut_getter);
-//	printf("########################################\n");
-//	printf("END\n");
 }
 
 void	join_threads(t_data *data)
@@ -65,12 +55,8 @@ int	main(int ac, char **av)
 	create_threads(&data);
 	while (1)
 	{
-//		if (full_monitoring(&data)
-//			alive_monitoring(&data))
-//		printf("START\n");
 		if (alive_monitoring(&data) || full_monitoring(&data))
 			break ;
-//		printf("END\n");
 	}
 	join_threads(&data);
 	clean_data(&data);

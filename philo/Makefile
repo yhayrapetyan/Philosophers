@@ -14,7 +14,6 @@ HELPERS_SRC = 	print_instructions.c \
 				ft_usleep.c \
 
 GETTERS_SRC = 	get_time.c \
-				can_print.c \
                 get_die_time.c \
                 get_eat_time.c \
                 get_last_eat_time.c \
@@ -22,7 +21,6 @@ GETTERS_SRC = 	get_time.c \
                 get_philo_state.c \
                 get_sleep_time.c \
                 get_start_time.c \
-                can_iterate.c \
                 get_nb_meals.c
 
 SETTERS_SRC = 	set_philo_state.c \

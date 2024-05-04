@@ -14,12 +14,9 @@
 
 static void	notify_philo_died(t_data *data, int id)
 {
-	data->can_print = 0;
-	data->can_iterate = 0;
 	stop_processes(data);
-//	data->can_print = 1;
 	pthread_mutex_lock(&data->mut_print);
-	printf("❌ %lu %d %s\n", get_time() - get_start_time(data), id, DIED);
+	printf("❌ %llu %d %s\n", get_time() - get_start_time(data), id, DIED);
 	pthread_mutex_unlock(&data->mut_print);
 	pthread_mutex_unlock(&data->mut_iteration);
 }
@@ -74,13 +71,6 @@ int	full_monitoring(t_data *data)
 			return (0);
 		i++;
 	}
-	if (can_iterate(data))
-	{
-		pthread_mutex_lock(&data->mut_iteration);
-		data->can_iterate = 0;
-		pthread_mutex_unlock(&data->mut_iteration);
-		stop_processes(data);
-		return (1);
-	}
-	return (0);
+	stop_processes(data);
+	return (1);
 }

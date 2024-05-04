@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:51:45 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/05/01 18:50:51 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:23:47 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ int	init_data(t_data *data, int ac, char **av)
 {
 	data->nb_philos = ft_atoi(av[1]);
 	data->nb_meals = -1;
-	data->can_start = 0;
 	data->full_p = 0;
-	data->can_print = 1;
-	data->can_iterate = 1;
 	data->eat_time = (u_int64_t)ft_atoi(av[3]);
 	data->die_time = (u_int64_t)ft_atoi(av[2]);
 	data->sleep_time = (u_int64_t)ft_atoi(av[4]);
