@@ -12,14 +12,14 @@
 
 #include "philo.h"
 
-static int	handle_1_philo(t_philo *philo)
+void	*handle_1_philo(t_philo *philo)
 {
 	pthread_mutex_lock(philo->l_fork);
 	print_message(philo->data, philo->id, TAKE_FORKS);
 	ft_usleep(get_die_time(philo->data));
 	set_philo_state(philo, DEAD);
 	pthread_mutex_unlock(philo->l_fork);
-	return (1);
+	return (NULL);
 }
 
 void	*routine(void *philo_p)
