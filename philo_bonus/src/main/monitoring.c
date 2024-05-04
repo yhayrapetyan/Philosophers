@@ -6,42 +6,26 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:41:50 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 17:45:58 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:04:52 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-static int	philo_died(t_data *data)
-{
-	if (get_philo_state(data) != EATING
-		&& get_time() - get_last_eat_time(data) > get_die_time(data))
-		return (1);
-	return (0);
-}
-
-void	*alive_monitoring(void *data_p)
+void	*monitoring(void *data_p)
 {
 	t_data	*data;
 
 	data = (t_data *)data_p;
 	while (should_stop(get_philo_state(data)) == 0)
 	{
-		if (someone_died())
-			return (set_philo_state(data, FINISH), NULL);
-		if (philo_died(data))
+		if (get_time() - get_last_eat_time(data) > get_die_time(data) && \
+			get_philo_state(data) != FULL)
 		{
 			sem_wait(data->sem_print);
-			if (philo_died(data) && someone_died() == 0)
-			{
-				set_philo_state(data, DEAD);
-				data->sem_death = sem_open("/death", O_CREAT, 0644, 0);
-				printf("%llu %d %s\n", get_time() - get_start_time(data),
-					get_id(data), DIED);
-				sem_post(data->sem_print);
-				break ;
-			}
-			sem_post(data->sem_print);
+			printf("%llu %d %s\n", get_time() - get_start_time(data),
+				data->philo.id, DIED);
+			exit(1);//need to clean
 		}
 		usleep(1000);
 	}

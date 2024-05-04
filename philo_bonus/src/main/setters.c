@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_sleep.c                                      :+:      :+:    :+:   */
+/*   setters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 16:33:56 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/04/30 16:34:01 by yuhayrap         ###   ########.fr       */
+/*   Created: 2024/05/04 16:17:38 by yuhayrap          #+#    #+#             */
+/*   Updated: 2024/05/04 16:18:03 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	philo_sleep(t_data *data)
+void	set_philo_state(t_data *data, t_state state)
 {
-	set_philo_state(data, SLEEPING);
-	if (print_message(data, SLEEP))
-		return (1);
-	ft_usleep(data->sleep_time);
-	return (0);
+	sem_wait(data->philo.sem_philo);
+	data->philo.state = state;
+	sem_post(data->philo.sem_philo);
+}
+
+void	update_last_meal_time(t_data *data)
+{
+	sem_wait(data->philo.sem_philo);
+	data->philo.last_eat_time = get_time();
+	sem_post(data->philo.sem_philo);
 }

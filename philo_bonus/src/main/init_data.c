@@ -12,30 +12,26 @@
 
 #include "philo_bonus.h"
 
-char	*init_philo(t_data *data, int id)
+void	init_philo(t_data *data, int id)
 {
-	char	*philo_id;
 	char	*temp_id;
 
 	temp_id = ft_itoa(id);
-	philo_id = ft_strjoin("/philo_", temp_id);
+	data->philo_id = ft_strjoin("/philo_", temp_id);
 	free(temp_id);
-	if (!philo_id)
+	if (!data->philo_id)
 	{
-		clean_data(data, 0);
-		free(philo_id);
+		clean_data(data);
+		free(data->philo_id);
 		ft_error("Allocation failed\n", 18);
 	}
-	sem_unlink(philo_id);
-	data->philo.sem_philo = sem_open(philo_id, O_CREAT, 0644, 1);
+	sem_unlink(data->philo_id);
+	data->philo.sem_philo = sem_open(data->philo_id, O_CREAT, 0644, 1);
 	data->philo.id = id;
-	update_last_meal_time(data);
-	return (philo_id);
 }
 
 static int	init_semaphores(t_data *data)
 {
-	sem_unlink("/death");
 	sem_unlink("/forks");
 	sem_unlink("/print");
 	sem_unlink("/data");
@@ -55,7 +51,6 @@ static int	init_semaphores(t_data *data)
 		sem_close(data->sem_data);
 		return (printf("SEM FAILED\n"));
 	}
-	data->sem_death = NULL;
 	return (0);
 }
 

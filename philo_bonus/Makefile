@@ -1,14 +1,11 @@
-SRC =			eat.c \
-				fork_utils.c \
-				init_data.c \
+SRC =			init_data.c \
 				monitoring.c \
 				philo_bonus.c \
-				philo_sleep.c \
 				routine.c \
 				clean_data.c \
-				someone_died.c \
 				should_stop.c \
-				think.c
+				getters.c \
+				setters.c
 
 HELPERS_SRC = 	ft_atoi.c \
 				ft_error.c \
@@ -19,16 +16,6 @@ HELPERS_SRC = 	ft_atoi.c \
 				print_instructions.c \
 				print_message.c
 
-GETTERS_SRC = 	get_last_eat_time.c \
-				get_philo_state.c \
-				get_start_time.c \
-				get_die_time.c \
-				get_time.c \
-				get_id.c
-
-SETTERS_SRC = 	set_philo_state.c \
-				update_last_meal_time.c
-
 VALIDATION_SRC = 	check_input.c
 
 HEADERS = 	philo_bonus_utils.h \
@@ -37,22 +24,16 @@ HEADERS = 	philo_bonus_utils.h \
 SRC_DIR = ./src/main/
 HELPERS_DIR = ./src/helpers/
 VALIDATION_DIR = ./src/validation/
-GETTERS_DIR = ./src/main/getters/
-SETTERS_DIR = ./src/main/setters/
 INC = ./includes/
 
 HEADERS := $(addprefix $(INC), $(HEADERS))
 SRC := $(addprefix $(SRC_DIR), $(SRC))
-GETTERS_SRC := $(addprefix $(GETTERS_DIR), $(GETTERS_SRC))
-SETTERS_SRC := $(addprefix $(SETTERS_DIR), $(SETTERS_SRC))
 VALIDATION_SRC := $(addprefix $(VALIDATION_DIR), $(VALIDATION_SRC))
 HELPERS_SRC := $(addprefix $(HELPERS_DIR), $(HELPERS_SRC))
 OBJS = $(SRC:.c=.o)
 
 SRC += $(VALIDATION_SRC)
 SRC += $(HELPERS_SRC)
-SRC += $(GETTERS_SRC)
-SRC += $(SETTERS_SRC)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

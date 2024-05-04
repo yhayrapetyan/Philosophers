@@ -27,6 +27,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include <semaphore.h>
+# include <signal.h>
 
 # include <sys/wait.h>
 # include <fcntl.h>
@@ -70,9 +71,10 @@ typedef struct s_data
 	sem_t			*sem_forks;
 	sem_t			*sem_print;
 	sem_t			*sem_data;
-	sem_t			*sem_death;
 	pthread_t		monitor;
 	t_philo			philo;
+	pid_t			philos[200];
+	char			*philo_id;
 }	t_data;
 
 #endif
