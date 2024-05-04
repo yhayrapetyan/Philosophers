@@ -28,6 +28,7 @@ void	init_philo(t_data *data, int id)
 	sem_unlink(data->philo_id);
 	data->philo.sem_philo = sem_open(data->philo_id, O_CREAT, 0644, 1);
 	data->philo.id = id;
+	update_last_meal_time(data);
 }
 
 static int	init_semaphores(t_data *data)

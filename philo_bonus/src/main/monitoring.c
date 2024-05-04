@@ -6,7 +6,7 @@
 /*   By: yuhayrap <yuhayrap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:41:50 by yuhayrap          #+#    #+#             */
-/*   Updated: 2024/05/04 17:04:52 by yuhayrap         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:25:13 by yuhayrap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void	*monitoring(void *data_p)
 			sem_wait(data->sem_print);
 			printf("%llu %d %s\n", get_time() - get_start_time(data),
 				data->philo.id, DIED);
-			exit(1);//need to clean
+			sem_close(data->philo.sem_philo);
+			sem_unlink(data->philo_id);
+			free(data->philo_id);
+			clean_data(data);
+			exit(1);
 		}
 		usleep(1000);
 	}

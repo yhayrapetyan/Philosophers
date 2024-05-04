@@ -16,7 +16,7 @@ static void	notify_philo_died(t_data *data, int id)
 {
 	stop_processes(data);
 	pthread_mutex_lock(&data->mut_print);
-	printf("❌ %llu %d %s\n", get_time() - get_start_time(data), id, DIED);
+	printf("%llu %d %s\n", get_time() - get_start_time(data), id, DIED);
 	pthread_mutex_unlock(&data->mut_print);
 	pthread_mutex_unlock(&data->mut_iteration);
 }

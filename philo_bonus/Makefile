@@ -5,7 +5,9 @@ SRC =			init_data.c \
 				clean_data.c \
 				should_stop.c \
 				getters.c \
-				setters.c
+				setters.c \
+				check_input.c
+
 
 HELPERS_SRC = 	ft_atoi.c \
 				ft_error.c \
@@ -16,23 +18,19 @@ HELPERS_SRC = 	ft_atoi.c \
 				print_instructions.c \
 				print_message.c
 
-VALIDATION_SRC = 	check_input.c
 
 HEADERS = 	philo_bonus_utils.h \
 			philo_bonus.h
 
 SRC_DIR = ./src/main/
 HELPERS_DIR = ./src/helpers/
-VALIDATION_DIR = ./src/validation/
 INC = ./includes/
 
 HEADERS := $(addprefix $(INC), $(HEADERS))
 SRC := $(addprefix $(SRC_DIR), $(SRC))
-VALIDATION_SRC := $(addprefix $(VALIDATION_DIR), $(VALIDATION_SRC))
 HELPERS_SRC := $(addprefix $(HELPERS_DIR), $(HELPERS_SRC))
 OBJS = $(SRC:.c=.o)
 
-SRC += $(VALIDATION_SRC)
 SRC += $(HELPERS_SRC)
 
 CC = cc
